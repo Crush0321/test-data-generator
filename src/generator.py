@@ -37,7 +37,7 @@ class DataGenerator:
         return random.choice(arr)
 
     def generate_identity_type(self):
-        return self.random_int(1, 4)
+        return 5
 
     def generate_identity_no(self):
         timestamp = str(int(time.time()))[-8:]
@@ -49,10 +49,10 @@ class DataGenerator:
         return self.random_item(FIRST_NAMES) + self.random_item(LAST_NAMES)
 
     def generate_sex(self):
-        return self.random_int(1, 2)
+        return self.random_int(0, 1)
 
     def generate_login_type(self):
-        return self.random_int(1, 3)
+        return self.random_int(1, 2)
 
     def generate_mobile(self):
         prefixes = ['131', '132', '133', '134', '135', '136', '137', '138', '139',

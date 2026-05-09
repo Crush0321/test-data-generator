@@ -3,11 +3,11 @@ CHUNK_SIZE = 10000
 OUTPUT_DIR = './output'
 
 FIELD_RULES = {
-    'identityType': {'type': 'enum', 'values': [1, 2, 3, 4]},
+    'identityType': {'type': 'fixed', 'value': 5},
     'identityNo': {'type': 'pattern', 'pattern': 'test{timestamp}{counter}'},
     'name': {'type': 'chinese_name'},
-    'sex': {'type': 'enum', 'values': [1, 2]},
-    'loginType': {'type': 'enum', 'values': [1, 2, 3]},
+    'sex': {'type': 'enum', 'values': [0, 1]},
+    'loginType': {'type': 'enum', 'values': [1, 2]},
     'mobile': {'type': 'mobile'},
     'email': {'type': 'email'},
     'smsCode': {'type': 'sms_code', 'nullable': True},
