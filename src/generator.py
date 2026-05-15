@@ -1,5 +1,7 @@
 import random
 import time
+import string
+
 import hashlib
 
 CHINESE_NAMES = [
@@ -9,10 +11,10 @@ CHINESE_NAMES = [
     '杨七', '朱八', '秦九', '尤十', '许一', '何二', '吕三', '施四',
     '张五', '孔六', '曹七', '严八', '华九', '金十', '魏一', '陶二'
 ]
+    #'张', '李', '王', '赵', '刘', '陈', '杨', '黄', '周', '吴','徐', '孙', '马', '朱', '胡', '郭', '何', '林', '罗', '高'
 
 FIRST_NAMES = [
-    '张', '李', '王', '赵', '刘', '陈', '杨', '黄', '周', '吴',
-    '徐', '孙', '马', '朱', '胡', '郭', '何', '林', '罗', '高'
+    '郑','冯','褚','卫','蒋','沈','韩','许','吕','施','孔','曹','严','华','金','魏','陶','姜','戚','谢','邹','喻','柏','水','窦','章','云','苏','潘','葛'
 ]
 
 LAST_NAMES = [
@@ -62,9 +64,16 @@ class DataGenerator:
         return f"{prefix}{suffix}"
 
     def generate_email(self):
-        name = self.generate_name()
+        """生成随机邮箱，只包含字母和数字"""
+        # 用户名长度 5-15
+        length = random.randint(5, 15)
+        
+        # 生成用户名：小写字母 + 数字
+        username = ''.join(random.choices(string.ascii_lowercase + string.digits, k=length))
+        
         domain = self.random_item(DOMAINS)
-        return f"{name}{random.randint(100, 999)}@{domain}"
+        
+        return f"{username}@{domain}"
 
     def generate_sms_code(self):
         if random.random() > 0.3:
@@ -112,3 +121,6 @@ class DataGenerator:
             'nationalityCn': nationality['cn'],
             'nationalityEn': nationality['en']
         }
+
+# info   = DataGenerator.generate_row("CHINESE") 
+# print (type(info), info)
